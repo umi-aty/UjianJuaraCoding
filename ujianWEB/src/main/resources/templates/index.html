@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title> JUARA CODING </title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+
+	<div class="container-fluid">
+	<h1 style="text-align: center;">BOOTCAMP IT JUARACODING BATCH 8</h1>
+	<div class="row mb-3 justify-content-around">
+    <div class="col-3 rounded" style="background-color:cyan;">
+	<a th:href="@{'/login'}">LOGIN</a>
+    </div>
+    <div class="col-3 rounded" style="background-color:yellow;">
+	<a th:href="@{'/register'}">REGISTER</a>
+    </div>
+    </div>
+
+</p>
+<div th:replace="script :: script(active=${active})">
+</div>
+</body>
+</html>

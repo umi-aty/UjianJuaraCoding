@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title> JUARA CODING </title>
+<div th:replace="style :: style(active=${active})">
+</div>
+<style type="text/css">
+</style>
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+<div class="container-fluid">
+<h1 style="text-align: center;">BOOTCAMP IT JUARACODING BATCH 8</h1>
+	<div class="row mb-3 justify-content-around">
+    <div class="col-3 rounded" style="background-color:cyan;">
+      <h5>Jumlah Laporan</h5>
+      <h4 th:text="${count}">[Laporan]</h4>
+    </div>
+    <div class="col-3 rounded" style="background-color:yellow;">
+      <h5>Jumlah Laporan dalam Proses</h5>
+      <h4 th:text="${countProses}">[Laporan]</h4>      
+    </div>
+    </div>
+    
+    <div class="row justify-content-around">
+    <div class="col-3 col-offset-1 rounded" style="background-color:green;">
+      <h5>Jumlah Laporan Approve</h5>
+      <h4 th:text="${countApprove}">[Laporan]</h4>
+    </div>
+    <div class="col-3 col-offset-1 rounded" style="background-color:red;">
+      <h5>Jumlah Laporan Reject</h5>
+      <h4 th:text="${countReject}">[Laporan]</h4>
+    </div>
+    </div>
+  	</div>
+<div th:replace="script :: script(active=${active})">
+</div>
+</body>
+</html>

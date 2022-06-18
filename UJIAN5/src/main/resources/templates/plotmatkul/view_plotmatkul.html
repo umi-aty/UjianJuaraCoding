@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Plot Mata Kuliah</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+
+
+<div class="container-md">	
+<div class="my-4 p-8 bg-body rounded shadow-md">
+<a th:href="@{'/plotmatkul/add/'}" class="btn btn-primary btn-sm" tabindex="-1" role="button" >Add Plot Mata Kuliah</a>
+<p></p>
+
+<div class="table-responsive">
+<table class="table table-light table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dosen</th>
+      <th scope="col">Mahasiswa</th>
+      <th scope="col">Mata Kuliah</th>
+      <th scope="col">Soal</th>
+     
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr th:each="plotMatkul : ${listPlotMatkul}">
+      <td scope="row" th:text="${plotMatkul.id}"></td>
+      <td th:text="${plotMatkul.dosen.namaDosen}"></td>
+      <td th:text="${plotMatkul.mahasiswa.namaMahasiswa}"></td>
+      <td th:text="${plotMatkul.matakuliah.namaMataKuliah}"></td>
+      <td th:text="${plotMatkul.soal.namaSoal}"></td>
+     
+      <td>
+         <a th:href="@{/plotmatkul/update/{id}(id=${plotMatkul.id})}" class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-folder" ></i> Update </a>
+         <a th:href="@{/plotmatkul/delete/{id}(id=${plotMatkul.id})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Delete </a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

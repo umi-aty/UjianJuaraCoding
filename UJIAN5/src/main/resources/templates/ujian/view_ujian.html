@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Pertanyaan</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+<form action="#" th:action="@{/ujian/view}" th:object="${pertanyaan}" method="post" enctype="multipart/form-data">
+
+<div class="container-md">	
+<div class="my-4 p-8 bg-body rounded shadow-md">
+	<div th:each="pertanyaan : ${listPertanyaan}">
+	<div><label th:text="${pertanyaan.namaPertanyaan}"/></div>
+<table border="0">
+	<td>
+	<div th:text="${pertanyaan.jawaban1}"></div>
+    <div th:text="${pertanyaan.jawaban2}"></div>
+    <div th:text="${pertanyaan.jawaban3}"></div>
+    <div th:text="${pertanyaan.jawaban4}"></div>
+    </td>
+    <td width="100px"> </td>
+    <td>
+    <div><img th:src="@{${pertanyaan.statusGambar}}" width="100" height="100"></div>
+    </td>
+</table>  	
+</div>
+</div>
+<p> <input type="submit" value="Submit" > <input type="reset" value="Reset"> </p>
+</form>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

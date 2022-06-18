@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Soal</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<H1>Input Soal</H1>
+
+<form action="#" th:action="@{/soal/view}" th:object="${soal}" method="post">
+
+
+<div class="mb-3">
+  <label for="nama" class="form-label">Nama Soal</label>
+  <input type="text" class="form-control" id="nama" placeholder="Nama Soal" th:field="*{namaSoal}">
+</div>
+
+<div class="mb-3">
+  <label for="status" class="form-label">Status</label>
+  <input type="text" class="form-control" id="status" placeholder="Status" th:field="*{status}">
+</div>
+
+<div class="mb-3">
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{lstPertanyaan}">
+
+        <option th:each="pertanyaan,row : ${listPertanyaan}"
+                th:value="${pertanyaan.id}"
+                th:text="${pertanyaan.namaPertanyaan}"></option>
+</select>
+</div>
+
+<div class="mb-3">
+<input type="hidden" th:field="*{id}">
+</div>
+
+<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /> </p>
+</form>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

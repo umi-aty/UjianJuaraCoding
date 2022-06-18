@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Admin</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+
+<div class="container-md">	
+<div class="my-4 p-8 bg-body rounded shadow-md">
+<a th:href="@{'/admin/add/'}" class="btn btn-primary btn-sm" tabindex="-1" role="button" > <i class="fa fa-plus" ></i> Add Admin</a>
+<p></p>
+
+<div class="table-responsive">
+<table class="table table-light table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Role</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr th:each="admin : ${listAdmin}">
+      <th scope="row" th:text="${admin.id}"></th>
+      <td th:text="${admin.username}"></td>
+      <td th:text="${admin.role}"></td>
+      <td>
+         <a th:href="@{/admin/update/{id}(id=${admin.id})}" class="btn btn-warning btn-sm" tabindex="-1" role="button" ><i class="fa fa-warning" ></i> Update </a>
+         <a th:href="@{/admin/delete/{id}(id=${admin.id})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-trash"></i> Delete </a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

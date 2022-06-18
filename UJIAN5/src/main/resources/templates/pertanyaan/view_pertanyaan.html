@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Pertanyaan</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+
+<div class="container-md">	
+<div class="my-4 p-8 bg-body rounded shadow-md">
+<a th:href="@{'/pertanyaan/add/'}" class="btn btn-primary btn-sm" tabindex="-1" role="button">Add Pertanyaan</a>
+<p> </p>
+
+<div class="table-responsive">
+<table class="table table-light table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pertanyaan</th>
+      <th scope="col">Jawaban 1</th>
+      <th scope="col">Jawaban 2</th>
+      <th scope="col">Jawaban 3</th>
+      <th scope="col">Jawaban 4</th>
+      <th scope="col">Jawaban Benar</th>
+      <th scope="col">Status Gambar</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr th:each="pertanyaan : ${listPertanyaan}">
+      <th scope="row" th:text="${pertanyaan.id}"></th>
+      <td th:text="${pertanyaan.namaPertanyaan}"></td>
+      <td th:text="${pertanyaan.jawaban1}"></td>
+      <td th:text="${pertanyaan.jawaban2}"></td>
+      <td th:text="${pertanyaan.jawaban3}"></td>
+      <td th:text="${pertanyaan.jawaban4}"></td>
+      <td th:text="${pertanyaan.jawaban_benar}"></td>
+      <td><img th:src="@{${pertanyaan.statusGambar}}" width="100" height="100"></td>
+      <td>
+         <a th:href="@{/pertanyaan/update/{id}(id=${pertanyaan.id})}" class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-folder" ></i> Update </a>
+         <a th:href="@{/pertanyaan/delete/{id}(id=${pertanyaan.id})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Delete </a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

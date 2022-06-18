@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Plot Mata Kuliah</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<H1>Input Plot Mata Kuliah</H1>
+
+<form action="#" th:action="@{/plotmatkul/view}" th:object="${plotMatkul}" method="post">
+
+<div class="mb-3">
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{dosen}">
+
+        <option th:each="dosen,row : ${listDosen}"
+                th:value="${dosen.id}"
+                th:text="${dosen.namaDosen}"></option>
+</select>
+</div>
+
+<div class="mb-3">
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{mahasiswa}">
+
+        <option th:each="mahasiswa,row : ${listMahasiswa}"
+                th:value="${mahasiswa.id}"
+                th:text="${mahasiswa.namaMahasiswa}"></option>
+</select>
+</div>
+
+<div class="mb-3">
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{matakuliah}">
+
+        <option th:each="mataKuliah,row : ${listMatkul}"
+                th:value="${mataKuliah.id}"
+                th:text="${mataKuliah.namaMataKuliah}"></option>
+</select>
+</div>
+
+<div class="mb-3">
+<select id="multiSelectElementsSelected"
+            name="multiSelectElementsSelected"
+            multiple="multiple"
+            th:field="*{soal}">
+
+        <option th:each="soal,row : ${listSoal}"
+                th:value="${soal.id}"
+                th:text="${soal.namaSoal}"></option>
+</select>
+</div>
+
+<div class="mb-3">
+<input type="hidden" th:field="*{id}">
+</div>
+
+<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /> </p>
+</form>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>

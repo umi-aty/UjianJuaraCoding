@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Mahasiswa</title>
+<div th:replace="style :: style(active=${active})">
+</div>
+
+</head>
+<body>
+<div th:replace="header :: header(active=${active})">
+</div>
+
+<div class="container-md">	
+<div class="my-4 p-8 bg-body rounded shadow-md">
+<a th:href="@{'/mahasiswa/add/'}" class="btn btn-primary btn-sm" tabindex="-1" role="button">Add Mahasiswa</a>
+<p> </p>
+
+<div class="table-responsive">
+<table class="table table-light table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">NIM</th>
+      <th scope="col">Nama</th>
+      <th scope="col">JenisKelamin</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr th:each="mahasiswa : ${listMahasiswa}">
+      <th scope="row" th:text="${mahasiswa.id}"></th>
+      <td th:text="${mahasiswa.nim}"></td>
+      <td th:text="${mahasiswa.namaMahasiswa}"></td>
+      <td th:text="${mahasiswa.jenisKelamin}"></td>
+      <td>
+         <a th:href="@{/mahasiswa/update/{id}(id=${mahasiswa.id})}" class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-folder" ></i> Update </a>
+         <a th:href="@{/mahasiswa/delete/{id}(id=${mahasiswa.id})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Delete </a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div th:replace="script :: script(active=${active})">
+</div>
+
+</body>
+</html>
